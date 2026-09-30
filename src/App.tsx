@@ -14,10 +14,10 @@ const services = [
 ];
 
 const galleryImages = [
-  { url: 'https://image.qwenlm.ai/generated-images/dc48e7a4-f2f8-4d58-ae20-09a3e04fdfcd/_result.png', label: 'Project 1' },
-  { url: 'https://image.qwenlm.ai/generated-images/6fa12746-2895-490b-a4b8-5879cb6c590a/_result.png', label: 'Project 2' },
-  { url: 'https://image.qwenlm.ai/generated-images/b897f205-66ea-4f67-8e42-87d155a75d93/_result.png', label: 'Project 3' },
-  { url: 'https://image.qwenlm.ai/generated-images/54929186-beeb-491a-bcd0-4b9d5a77f491/_result.png', label: 'Project 4' },
+  { url: 'https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/b7fa0e36-7236-493f-bdf5-80f653a0a543.jpg', label: 'Project 1' },
+  { url: 'https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/636108f0-9953-48c6-99f4-e524b0815355.jpg', label: 'Project 2' },
+  { url: 'https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/4caa7926-09c5-4f0b-92b9-0f6094b84ec3.jpg', label: 'Project 3' },
+  { url: 'https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/21d2b35b-511f-4909-9c6c-b02df3e0a885.jpg', label: 'Project 4' },
 ];
 
 const heroImage = 'https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/daf58869-765e-407b-8aec-60ebfeae3ae6.jpg';

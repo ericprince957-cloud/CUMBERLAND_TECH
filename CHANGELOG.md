@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hero section with WhatsApp CTA
 - About Us section with feature cards
 - Services section with 7 service cards
-- Image gallery with 4 project images
+- Image gallery with 4 client-provided project images (supaimg.com URLs)
 - "Why Choose Us" banner section
 - Contact section with Google Maps embed
 - Floating WhatsApp button
