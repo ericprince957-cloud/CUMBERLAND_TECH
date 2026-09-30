@@ -93,18 +93,20 @@ FLOATING ELEMENTS (Always Visible)
 ═══════════════════════════════════════════════════════════════
 
 ┌─────────────────────────────────────────────────────────────┐
+│  HEADER                                                     │
+│  [Logo] [Home] [Services] [Gallery] [Contact] [Call Now]   │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│  🆘 URGENT REPAIR?              💬                         │
+│  [Red Pulsing Button]      [WhatsApp Button]               │
+│  (Top-Right, below header) (Bottom-Right)                  │
 │                                                             │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
 │                                                             │
-│                                                             │
-│                                                             │
-│                                                             │
-│                                                             │
-│                                                             │
-│  🆘 URGENT REPAIR?                    💬                   │
-│  [Red Pulsing Button]              [WhatsApp Button]       │
-│                                                             │
-│  (Bottom-Left on Desktop)         (Bottom-Right)           │
-│  (Bottom, Full-Width on Mobile)                            │
+│  [Rest of the website content below]                       │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 
@@ -116,6 +118,11 @@ MOBILE LAYOUT (≤768px)
 ┌─────────────────────┐
 │  HEADER             │
 │  [Logo] [☰ Menu]   │
+└─────────────────────┘
+         ↓
+┌─────────────────────┐
+│  🆘 URGENT REPAIR?  │
+│  (Top-Right)       │
 └─────────────────────┘
          ↓
 ┌─────────────────────┐
@@ -151,6 +158,10 @@ MOBILE LAYOUT (≤768px)
 │  CONTACT            │
 │  (Stacked)         │
 └─────────────────────┘
+         ↓
+              💬
+           [WhatsApp]
+           (Bottom-Right)
 
 
 ═══════════════════════════════════════════════════════════════
@@ -159,6 +170,15 @@ FLOATING BUTTONS - POSITIONING DETAILS
 
 DESKTOP (>768px):
 ┌─────────────────────────────────────────────────────────────┐
+│  HEADER                                                     │
+│  [Logo] [Home] [Services] [Gallery] [Contact] [Call Now]   │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│  🆘 URGENT REPAIR?                                          │
+│  [Top-Right]                                                │
+│  top: 80px                                                  │
+│  right: 20px                                                │
 │                                                             │
 │                                                             │
 │                                                             │
@@ -166,30 +186,30 @@ DESKTOP (>768px):
 │                                                             │
 │                                                             │
 │                                                             │
-│  🆘 URGENT REPAIR?                              💬         │
-│  [Bottom-Left]                                  [Bottom-R] │
-│  left: 20px                                     right: 20px│
-│  bottom: 20px                                   bottom: 20px│
-│                                                             │
+│                                                   💬        │
+│                                                [Bottom-R]   │
+│                                                right: 20px  │
+│                                                bottom: 20px │
 └─────────────────────────────────────────────────────────────┘
 
 MOBILE (≤768px):
 ┌─────────────────────────┐
+│  HEADER                 │
+│  [Logo] [☰ Menu]       │
+└─────────────────────────┘
+         ↓
+┌─────────────────────────┐
+│  🆘 URGENT REPAIR?      │
+│  [Top-Right]           │
+│  top: 70px             │
+│  right: 15px           │
+│  (Compact size)        │
 │                         │
 │                         │
 │                         │
 │                         │
 │                         │
 │                         │
-│                         │
-│                         │
-│  ┌───────────────────┐ │
-│  │ 🆘 URGENT REPAIR? │ │
-│  │ (Full Width)      │ │
-│  └───────────────────┘ │
-│  bottom: 100px         │
-│  left: 20px            │
-│  right: 20px           │
 │                         │
 │              💬         │
 │           [WhatsApp]   │

@@ -652,11 +652,11 @@ function App() {
         href={EMERGENCY_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-24 md:bottom-6 left-6 right-6 md:right-auto md:w-auto z-50 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-bold shadow-2xl transition-all hover:scale-105 flex items-center justify-center gap-2 md:justify-start animate-pulse-red"
+        className="fixed top-20 right-4 md:top-24 md:right-6 z-50 bg-red-600 hover:bg-red-700 text-white px-4 py-2 md:px-5 md:py-3 rounded-full font-bold shadow-2xl transition-all hover:scale-105 flex items-center gap-2 animate-pulse-red"
         aria-label="Emergency Repair"
       >
-        <span className="text-xl">🆘</span>
-        <span>Urgent Repair?</span>
+        <span className="text-lg md:text-xl">🆘</span>
+        <span className="text-sm md:text-base">Urgent Repair?</span>
       </a>
 
       {/* Floating WhatsApp Button */}
