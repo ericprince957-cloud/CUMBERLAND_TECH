@@ -486,10 +486,17 @@ footer {
     }
 
     .emergency-float {
-        bottom: 100px;
-        right: 20px;
-        left: 20px;
-        justify-content: center;
+        top: 70px;
+        right: 15px;
+        padding: 0.5rem 1rem;
+    }
+
+    .emergency-icon {
+        font-size: 1rem;
+    }
+
+    .emergency-text {
+        font-size: 0.8rem;
     }
 }
 
@@ -498,11 +505,11 @@ footer {
    ============================================ */
 .emergency-float {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    top: 80px;
+    right: 20px;
     background: linear-gradient(135deg, #dc2626, #b91c1c);
     color: white;
-    padding: 0.8rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
@@ -521,11 +528,11 @@ footer {
 }
 
 .emergency-icon {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .emergency-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 @keyframes pulse-red {

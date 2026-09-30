@@ -11,8 +11,8 @@ Three high-value, conversion-boosting features have been successfully added to t
 A persistent, attention-grabbing button that allows customers to instantly request urgent AC repair services via WhatsApp.
 
 ### Design & Placement
-- **Mobile**: Fixed at bottom-right (above WhatsApp button)
-- **Desktop**: Fixed at bottom-left
+- **Mobile**: Fixed at top-right (below header, 70px from top)
+- **Desktop**: Fixed at top-right (below header, 80px from top)
 - **Color**: Bright red gradient (#dc2626 to #b91c1c)
 - **Animation**: Pulsing red glow effect (2s infinite loop)
 - **Text**: "🆘 Urgent Repair?"
