@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const WHATSAPP_LINK = 'https://wa.me/2347066350488';
 const PHONE_NUMBER = '07066350488';
+const EMERGENCY_LINK = 'https://wa.me/2347066350488?text=' + encodeURIComponent('Hi Cumberland Tech, I have an urgent AC repair emergency. Please call me ASAP.');
 
 const services = [
   { name: 'Industrial and Domestic Air Conditioning', icon: 'fa-industry' },
@@ -22,8 +23,53 @@ const galleryImages = [
 
 const heroImage = 'https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/daf58869-765e-407b-8aec-60ebfeae3ae6.jpg';
 
+const serviceAreas = [
+  { name: 'Warri', icon: 'fa-city', description: 'Full coverage' },
+  { name: 'Effurun', icon: 'fa-location-dot', description: 'Headquarters' },
+  { name: 'Ughelli', icon: 'fa-map-pin', description: 'Fast service' },
+  { name: 'Sapele', icon: 'fa-map-location-dot', description: 'Same-day service' },
+  { name: 'Delta State', icon: 'fa-map', description: 'Statewide coverage' },
+];
+
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+
+  const handleSliderMove = (clientX: number) => {
+    if (!sliderRef.current) return;
+    const rect = sliderRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(percentage);
+  };
+
+  const handleMouseDown = () => {
+    isDragging.current = true;
+  };
+
+  const handleMouseUp = () => {
+    isDragging.current = false;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging.current) {
+      handleSliderMove(e.clientX);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    handleSliderMove(e.touches[0].clientX);
+  };
+
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      isDragging.current = false;
+    };
+    window.addEventListener('mouseup', handleGlobalMouseUp);
+    return () => window.removeEventListener('mouseup', handleGlobalMouseUp);
+  }, []);
 
   const getWhatsAppLink = (serviceName?: string) => {
     if (serviceName) {
@@ -242,6 +288,74 @@ function App() {
         </div>
       </section>
 
+      {/* Before & After Slider Section */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">See Our Quality Work</h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto mb-4 rounded-full"></div>
+            <p className="text-gray-600">Drag the slider to see the transformation</p>
+          </div>
+          
+          <div 
+            ref={sliderRef}
+            className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl cursor-col-resize select-none"
+            style={{ aspectRatio: '16/9' }}
+            onMouseMove={handleMouseMove}
+            onTouchMove={handleTouchMove}
+          >
+            {/* Before Image (Full width background) */}
+            <div className="absolute inset-0">
+              <img 
+                src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&q=80&w=1200"
+                alt="Before - Dirty AC unit"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                BEFORE
+              </div>
+            </div>
+            
+            {/* After Image (Clipped) */}
+            <div 
+              className="absolute inset-0"
+              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1631545806609-35d4ae440e93?auto=format&fit=crop&q=80&w=1200"
+                alt="After - Clean AC unit"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                AFTER
+              </div>
+            </div>
+            
+            {/* Slider Handle */}
+            <div 
+              className="absolute top-0 bottom-0 w-1 bg-white shadow-lg"
+              style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+            >
+              <div 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-2xl flex items-center justify-center cursor-col-resize hover:scale-110 transition-transform"
+                onMouseDown={handleMouseDown}
+                onTouchStart={handleMouseDown}
+              >
+                <div className="flex gap-1">
+                  <div className="w-1 h-6 bg-blue-800 rounded-full"></div>
+                  <div className="w-1 h-6 bg-blue-800 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <p className="text-center text-gray-500 mt-6 text-sm">
+            <i className="fas fa-hand-pointer mr-2"></i>
+            Drag the handle left or right to compare
+          </p>
+        </div>
+      </section>
+
       {/* Why Choose Us Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -274,6 +388,98 @@ function App() {
               </div>
               <h3 className="text-xl font-bold text-white mb-3">Affordable Pricing</h3>
               <p className="text-blue-100">Quality service doesn't have to break the bank. We offer competitive rates for all our services.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Area Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Areas We Serve</h2>
+            <div className="w-20 h-1 bg-orange-500 mx-auto mb-4 rounded-full"></div>
+            <p className="text-gray-600">Professional HVAC services across Delta State</p>
+          </div>
+          
+          {/* Service Area Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
+            {serviceAreas.map((area, index) => (
+              <div 
+                key={index}
+                className="group bg-gradient-to-br from-blue-50 to-white border-2 border-blue-100 rounded-xl p-6 text-center hover:shadow-2xl hover:-translate-y-2 hover:border-orange-500 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-800 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300">
+                  <i className={`fas ${area.icon} text-white text-2xl`}></i>
+                </div>
+                <h3 className="font-bold text-blue-900 text-lg mb-2 group-hover:text-orange-600 transition-colors">{area.name}</h3>
+                <p className="text-gray-600 text-sm">{area.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          {/* Map Placeholder */}
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl p-8 border-2 border-blue-200">
+            <div className="text-center mb-6">
+              <i className="fas fa-map-marked-alt text-blue-800 text-5xl mb-4"></i>
+              <h3 className="text-2xl font-bold text-blue-900 mb-2">Our Service Coverage</h3>
+              <p className="text-gray-600">Fast response across all major cities in Delta State</p>
+            </div>
+            
+            {/* Visual Map Representation */}
+            <div className="relative h-64 bg-white rounded-xl overflow-hidden shadow-inner">
+              {/* Map Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e3a5f" strokeWidth="1"/>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+              </div>
+              
+              {/* Location Dots */}
+              <div className="absolute top-1/3 left-1/4 flex flex-col items-center">
+                <div className="w-4 h-4 bg-orange-500 rounded-full animate-pulse shadow-lg"></div>
+                <span className="text-xs font-bold text-blue-900 mt-1">Warri</span>
+              </div>
+              
+              <div className="absolute top-1/2 left-1/3 flex flex-col items-center">
+                <div className="w-4 h-4 bg-red-600 rounded-full animate-pulse shadow-lg"></div>
+                <span className="text-xs font-bold text-blue-900 mt-1">Effurun</span>
+              </div>
+              
+              <div className="absolute top-1/4 right-1/3 flex flex-col items-center">
+                <div className="w-4 h-4 bg-orange-500 rounded-full animate-pulse shadow-lg"></div>
+                <span className="text-xs font-bold text-blue-900 mt-1">Ughelli</span>
+              </div>
+              
+              <div className="absolute bottom-1/3 right-1/4 flex flex-col items-center">
+                <div className="w-4 h-4 bg-orange-500 rounded-full animate-pulse shadow-lg"></div>
+                <span className="text-xs font-bold text-blue-900 mt-1">Sapele</span>
+              </div>
+              
+              {/* Connection Lines */}
+              <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <line x1="25%" y1="33%" x2="33%" y2="50%" stroke="#f97316" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
+                <line x1="33%" y1="50%" x2="67%" y2="25%" stroke="#f97316" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
+                <line x1="67%" y1="25%" x2="75%" y2="67%" stroke="#f97316" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
+                <line x1="33%" y1="50%" x2="75%" y2="67%" stroke="#f97316" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
+              </svg>
+            </div>
+            
+            <div className="text-center mt-6">
+              <a 
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-blue-800 hover:text-orange-600 font-semibold transition-colors"
+              >
+                <i className="fas fa-phone"></i>
+                Check if we serve your area - Call us!
+              </a>
             </div>
           </div>
         </div>
@@ -440,6 +646,18 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Emergency Repair Button */}
+      <a
+        href={EMERGENCY_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-24 md:bottom-6 left-6 right-6 md:right-auto md:w-auto z-50 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-bold shadow-2xl transition-all hover:scale-105 flex items-center justify-center gap-2 md:justify-start animate-pulse-red"
+        aria-label="Emergency Repair"
+      >
+        <span className="text-xl">🆘</span>
+        <span>Urgent Repair?</span>
+      </a>
 
       {/* Floating WhatsApp Button */}
       <a
