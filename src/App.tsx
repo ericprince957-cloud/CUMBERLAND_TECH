@@ -60,6 +60,7 @@ function App() {
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
     handleSliderMove(e.touches[0].clientX);
   };
 
@@ -393,92 +394,46 @@ function App() {
         </div>
       </section>
 
-      {/* Service Area Section */}
+      {/* Service Area Section - Clean Professional List */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Areas We Serve</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Proudly Serving Delta State</h2>
             <div className="w-20 h-1 bg-orange-500 mx-auto mb-4 rounded-full"></div>
-            <p className="text-gray-600">Professional HVAC services across Delta State</p>
+            <p className="text-gray-600 text-lg">Fast response in Warri, Effurun, Ughelli, Sapele & surrounding areas.</p>
           </div>
           
-          {/* Service Area Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
-            {serviceAreas.map((area, index) => (
-              <div 
-                key={index}
-                className="group bg-gradient-to-br from-blue-50 to-white border-2 border-blue-100 rounded-xl p-6 text-center hover:shadow-2xl hover:-translate-y-2 hover:border-orange-500 transition-all duration-300 cursor-pointer"
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-800 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300">
-                  <i className={`fas ${area.icon} text-white text-2xl`}></i>
+          {/* Clean Service Area List */}
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {serviceAreas.map((area, index) => (
+                <div 
+                  key={index}
+                  className="group flex items-center gap-4 bg-white border-2 border-gray-100 rounded-xl p-5 hover:border-orange-500 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-800 to-blue-600 rounded-full flex items-center justify-center group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300">
+                    <i className={`fas ${area.icon} text-white text-lg`}></i>
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="font-bold text-blue-900 text-lg group-hover:text-orange-600 transition-colors">{area.name}</h3>
+                    <p className="text-gray-500 text-sm">{area.description}</p>
+                  </div>
+                  <i className="fas fa-check-circle text-green-500 text-xl flex-shrink-0"></i>
                 </div>
-                <h3 className="font-bold text-blue-900 text-lg mb-2 group-hover:text-orange-600 transition-colors">{area.name}</h3>
-                <p className="text-gray-600 text-sm">{area.description}</p>
-              </div>
-            ))}
-          </div>
-          
-          {/* Map Placeholder */}
-          <div className="max-w-4xl mx-auto bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl p-8 border-2 border-blue-200">
-            <div className="text-center mb-6">
-              <i className="fas fa-map-marked-alt text-blue-800 text-5xl mb-4"></i>
-              <h3 className="text-2xl font-bold text-blue-900 mb-2">Our Service Coverage</h3>
-              <p className="text-gray-600">Fast response across all major cities in Delta State</p>
+              ))}
             </div>
             
-            {/* Visual Map Representation */}
-            <div className="relative h-64 bg-white rounded-xl overflow-hidden shadow-inner">
-              {/* Map Background Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e3a5f" strokeWidth="1"/>
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#grid)" />
-                </svg>
-              </div>
-              
-              {/* Location Dots */}
-              <div className="absolute top-1/3 left-1/4 flex flex-col items-center">
-                <div className="w-4 h-4 bg-orange-500 rounded-full animate-pulse shadow-lg"></div>
-                <span className="text-xs font-bold text-blue-900 mt-1">Warri</span>
-              </div>
-              
-              <div className="absolute top-1/2 left-1/3 flex flex-col items-center">
-                <div className="w-4 h-4 bg-red-600 rounded-full animate-pulse shadow-lg"></div>
-                <span className="text-xs font-bold text-blue-900 mt-1">Effurun</span>
-              </div>
-              
-              <div className="absolute top-1/4 right-1/3 flex flex-col items-center">
-                <div className="w-4 h-4 bg-orange-500 rounded-full animate-pulse shadow-lg"></div>
-                <span className="text-xs font-bold text-blue-900 mt-1">Ughelli</span>
-              </div>
-              
-              <div className="absolute bottom-1/3 right-1/4 flex flex-col items-center">
-                <div className="w-4 h-4 bg-orange-500 rounded-full animate-pulse shadow-lg"></div>
-                <span className="text-xs font-bold text-blue-900 mt-1">Sapele</span>
-              </div>
-              
-              {/* Connection Lines */}
-              <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <line x1="25%" y1="33%" x2="33%" y2="50%" stroke="#f97316" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
-                <line x1="33%" y1="50%" x2="67%" y2="25%" stroke="#f97316" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
-                <line x1="67%" y1="25%" x2="75%" y2="67%" stroke="#f97316" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
-                <line x1="33%" y1="50%" x2="75%" y2="67%" stroke="#f97316" strokeWidth="2" strokeDasharray="5,5" opacity="0.5"/>
-              </svg>
-            </div>
-            
-            <div className="text-center mt-6">
+            {/* Call to Action */}
+            <div className="text-center mt-10">
+              <p className="text-gray-600 mb-4">Don't see your area? We likely serve it too!</p>
               <a 
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-blue-800 hover:text-orange-600 font-semibold transition-colors"
+                className="inline-flex items-center gap-2 bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg hover:shadow-xl"
               >
-                <i className="fas fa-phone"></i>
-                Check if we serve your area - Call us!
+                <i className="fab fa-whatsapp text-xl"></i>
+                Check Your Area
               </a>
             </div>
           </div>
@@ -647,16 +602,16 @@ function App() {
         </div>
       </footer>
 
-      {/* Emergency Repair Button */}
+      {/* Emergency Repair Button - Compact Circle */}
       <a
         href={EMERGENCY_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed top-20 right-4 md:top-24 md:right-6 z-50 bg-red-600 hover:bg-red-700 text-white px-4 py-2 md:px-5 md:py-3 rounded-full font-bold shadow-2xl transition-all hover:scale-105 flex items-center gap-2 animate-pulse-red"
+        className="fixed bottom-24 right-4 z-50 w-14 h-14 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110"
         aria-label="Emergency Repair"
+        title="Urgent Repair? Click here"
       >
-        <span className="text-lg md:text-xl">🆘</span>
-        <span className="text-sm md:text-base">Urgent Repair?</span>
+        <i className="fas fa-phone-alt text-white text-xl"></i>
       </a>
 
       {/* Floating WhatsApp Button */}

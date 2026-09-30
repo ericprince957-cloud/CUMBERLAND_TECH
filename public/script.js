@@ -119,18 +119,18 @@ document.addEventListener('DOMContentLoaded', function() {
             isDragging = false;
         });
 
-        // Touch support
+        // Touch support for mobile
         comparisonSlider.addEventListener('touchstart', (e) => {
             isDragging = true;
             updateSliderPosition(e.touches[0].clientX);
-        });
+        }, { passive: true });
 
         comparisonSlider.addEventListener('touchmove', (e) => {
             if (isDragging) {
                 e.preventDefault();
                 updateSliderPosition(e.touches[0].clientX);
             }
-        });
+        }, { passive: false });
 
         comparisonSlider.addEventListener('touchend', () => {
             isDragging = false;
