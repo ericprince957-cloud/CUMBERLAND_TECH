@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 const WHATSAPP_LINK = 'https://wa.me/2347066350488';
 const PHONE_NUMBER = '07066350488';
@@ -33,44 +33,6 @@ const serviceAreas = [
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-
-  const handleSliderMove = (clientX: number) => {
-    if (!sliderRef.current) return;
-    const rect = sliderRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPosition(percentage);
-  };
-
-  const handleMouseDown = () => {
-    isDragging.current = true;
-  };
-
-  const handleMouseUp = () => {
-    isDragging.current = false;
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging.current) {
-      handleSliderMove(e.clientX);
-    }
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault();
-    handleSliderMove(e.touches[0].clientX);
-  };
-
-  useEffect(() => {
-    const handleGlobalMouseUp = () => {
-      isDragging.current = false;
-    };
-    window.addEventListener('mouseup', handleGlobalMouseUp);
-    return () => window.removeEventListener('mouseup', handleGlobalMouseUp);
-  }, []);
 
   const getWhatsAppLink = (serviceName?: string) => {
     if (serviceName) {
@@ -286,74 +248,6 @@ function App() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Before & After Slider Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">See Our Quality Work</h2>
-            <div className="w-20 h-1 bg-orange-500 mx-auto mb-4 rounded-full"></div>
-            <p className="text-gray-600">Drag the slider to see the transformation</p>
-          </div>
-          
-          <div 
-            ref={sliderRef}
-            className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl cursor-col-resize select-none"
-            style={{ aspectRatio: '16/9' }}
-            onMouseMove={handleMouseMove}
-            onTouchMove={handleTouchMove}
-          >
-            {/* Before Image (Full width background) */}
-            <div className="absolute inset-0">
-              <img 
-                src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&q=80&w=1200"
-                alt="Before - Dirty AC unit"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-                BEFORE
-              </div>
-            </div>
-            
-            {/* After Image (Clipped) */}
-            <div 
-              className="absolute inset-0"
-              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1631545806609-35d4ae440e93?auto=format&fit=crop&q=80&w=1200"
-                alt="After - Clean AC unit"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-                AFTER
-              </div>
-            </div>
-            
-            {/* Slider Handle */}
-            <div 
-              className="absolute top-0 bottom-0 w-1 bg-white shadow-lg"
-              style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
-            >
-              <div 
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-2xl flex items-center justify-center cursor-col-resize hover:scale-110 transition-transform"
-                onMouseDown={handleMouseDown}
-                onTouchStart={handleMouseDown}
-              >
-                <div className="flex gap-1">
-                  <div className="w-1 h-6 bg-blue-800 rounded-full"></div>
-                  <div className="w-1 h-6 bg-blue-800 rounded-full"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <p className="text-center text-gray-500 mt-6 text-sm">
-            <i className="fas fa-hand-pointer mr-2"></i>
-            Drag the handle left or right to compare
-          </p>
         </div>
       </section>
 
