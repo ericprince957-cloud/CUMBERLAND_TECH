@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 const WHATSAPP_LINK = 'https://wa.me/2347066350488';
 const PHONE_NUMBER = '07066350488';
@@ -33,44 +33,6 @@ const serviceAreas = [
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-
-  const handleSliderMove = (clientX: number) => {
-    if (!sliderRef.current) return;
-    const rect = sliderRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPosition(percentage);
-  };
-
-  const handleMouseDown = () => {
-    isDragging.current = true;
-  };
-
-  const handleMouseUp = () => {
-    isDragging.current = false;
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging.current) {
-      handleSliderMove(e.clientX);
-    }
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault();
-    handleSliderMove(e.touches[0].clientX);
-  };
-
-  useEffect(() => {
-    const handleGlobalMouseUp = () => {
-      isDragging.current = false;
-    };
-    window.addEventListener('mouseup', handleGlobalMouseUp);
-    return () => window.removeEventListener('mouseup', handleGlobalMouseUp);
-  }, []);
 
   const getWhatsAppLink = (serviceName?: string) => {
     if (serviceName) {
@@ -197,8 +159,8 @@ function App() {
             <p className="text-lg text-gray-600 leading-relaxed">
               Cumberland Tech (Nig.) is your trusted partner for all air conditioning and refrigeration needs in Effurun, Warri, and Delta State. We specialize in both industrial and domestic solutions, ensuring your comfort and efficiency.
             </p>
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-blue-50 p-6 rounded-xl">
+            <div className="mt-10 flex flex-wrap gap-4 justify-center">
+              <div className="bg-blue-50 p-6 rounded-xl flex-1 min-w-[250px] max-w-full md:max-w-[calc(33.333%-0.67rem)]">
                 <div className="w-14 h-14 bg-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-award text-white text-xl"></i>
                 </div>
@@ -232,11 +194,11 @@ function App() {
             <div className="w-20 h-1 bg-orange-500 mx-auto mb-4 rounded-full"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">Comprehensive HVAC solutions for residential and commercial properties</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap gap-4 justify-center">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group"
+                className="bg-white rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group flex flex-col flex-1 min-w-[260px] max-w-full sm:max-w-[calc(50%-0.5rem)] lg:max-w-[calc(33.333%-0.67rem)] xl:max-w-[calc(25%-0.75rem)]"
               >
                 <div className="w-14 h-14 bg-gradient-to-br from-blue-800 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <i className={`fas ${service.icon} text-white text-xl`}></i>
@@ -266,9 +228,9 @@ function App() {
             <div className="w-20 h-1 bg-orange-500 mx-auto mb-4 rounded-full"></div>
             <p className="text-gray-600">Professional Installation & Maintenance</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="flex flex-wrap gap-4 justify-center">
             {galleryImages.map((image, index) => (
-              <div key={index} className="relative group rounded-xl overflow-hidden shadow-lg aspect-square">
+              <div key={index} className="relative group rounded-xl overflow-hidden shadow-lg aspect-square flex-1 min-w-[250px] max-w-full sm:max-w-[calc(50%-0.5rem)] lg:max-w-[calc(25%-0.75rem)]">
                 <img
                   src={image.url}
                   alt={image.label}
@@ -289,74 +251,6 @@ function App() {
         </div>
       </section>
 
-      {/* Before & After Slider Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">See Our Quality Work</h2>
-            <div className="w-20 h-1 bg-orange-500 mx-auto mb-4 rounded-full"></div>
-            <p className="text-gray-600">Drag the slider to see the transformation</p>
-          </div>
-          
-          <div 
-            ref={sliderRef}
-            className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl cursor-col-resize select-none"
-            style={{ aspectRatio: '16/9' }}
-            onMouseMove={handleMouseMove}
-            onTouchMove={handleTouchMove}
-          >
-            {/* Before Image (Full width background) */}
-            <div className="absolute inset-0">
-              <img 
-                src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&q=80&w=1200"
-                alt="Before - Dirty AC unit"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-                BEFORE
-              </div>
-            </div>
-            
-            {/* After Image (Clipped) */}
-            <div 
-              className="absolute inset-0"
-              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1631545806609-35d4ae440e93?auto=format&fit=crop&q=80&w=1200"
-                alt="After - Clean AC unit"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-                AFTER
-              </div>
-            </div>
-            
-            {/* Slider Handle */}
-            <div 
-              className="absolute top-0 bottom-0 w-1 bg-white shadow-lg"
-              style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
-            >
-              <div 
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-2xl flex items-center justify-center cursor-col-resize hover:scale-110 transition-transform"
-                onMouseDown={handleMouseDown}
-                onTouchStart={handleMouseDown}
-              >
-                <div className="flex gap-1">
-                  <div className="w-1 h-6 bg-blue-800 rounded-full"></div>
-                  <div className="w-1 h-6 bg-blue-800 rounded-full"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <p className="text-center text-gray-500 mt-6 text-sm">
-            <i className="fas fa-hand-pointer mr-2"></i>
-            Drag the handle left or right to compare
-          </p>
-        </div>
-      </section>
-
       {/* Why Choose Us Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -368,22 +262,22 @@ function App() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose Us?</h2>
             <div className="w-20 h-1 bg-orange-500 mx-auto rounded-full"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+          <div className="flex flex-wrap gap-6 justify-center">
+            <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 flex-1 min-w-[280px] max-w-full md:max-w-[calc(33.333%-1rem)]">
               <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/30">
                 <i className="fas fa-check text-white text-3xl"></i>
               </div>
               <h3 className="text-xl font-bold text-white mb-3">Certified Experts</h3>
               <p className="text-blue-100">Our team consists of certified HVAC professionals with extensive training and experience.</p>
             </div>
-            <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 flex-1 min-w-[280px] max-w-full md:max-w-[calc(33.333%-1rem)]">
               <div className="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-orange-500/30">
                 <i className="fas fa-clock text-white text-3xl"></i>
               </div>
               <h3 className="text-xl font-bold text-white mb-3">Fast Response Time</h3>
               <p className="text-blue-100">We understand urgency. Our team responds quickly to ensure minimal downtime for your systems.</p>
             </div>
-            <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 flex-1 min-w-[280px] max-w-full md:max-w-[calc(33.333%-1rem)]">
               <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-500/30">
                 <i className="fas fa-hand-holding-usd text-white text-3xl"></i>
               </div>
@@ -403,13 +297,13 @@ function App() {
             <p className="text-gray-600 text-lg">Fast response in Warri, Effurun, Ughelli, Sapele & surrounding areas.</p>
           </div>
           
-          {/* Clean Service Area List */}
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Clean Service Area List - Flexbox Responsive */}
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-wrap gap-4 justify-center">
               {serviceAreas.map((area, index) => (
                 <div 
                   key={index}
-                  className="group flex items-center gap-4 bg-white border-2 border-gray-100 rounded-xl p-5 hover:border-orange-500 hover:shadow-lg transition-all duration-300"
+                  className="group flex items-center gap-3 bg-white border-2 border-gray-100 rounded-xl p-4 hover:border-orange-500 hover:shadow-lg transition-all duration-300 flex-1 min-w-[280px] max-w-full sm:max-w-[calc(50%-0.5rem)] lg:max-w-[calc(33.333%-0.67rem)]"
                 >
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-800 to-blue-600 rounded-full flex items-center justify-center group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300">
                     <i className={`fas ${area.icon} text-white text-lg`}></i>
@@ -447,9 +341,9 @@ function App() {
             <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Visit Us or Call Today</h2>
             <div className="w-20 h-1 bg-orange-500 mx-auto rounded-full"></div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="flex flex-wrap gap-6">
             {/* Contact Info */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg flex-1 min-w-[280px] max-w-full lg:max-w-[calc(50%-0.75rem)]">
               <h3 className="text-2xl font-bold text-blue-900 mb-6">Get In Touch</h3>
               
               <div className="space-y-6">
@@ -511,8 +405,8 @@ function App() {
             </div>
 
             {/* Map */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-              <div className="relative w-full h-full min-h-[400px]">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg flex-1 min-w-[280px] max-w-full lg:max-w-[calc(50%-0.75rem)]">
+              <div className="relative w-full h-full min-h-[300px] md:min-h-[400px]">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.1234567890!2d5.7417!3d5.5244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzEnMjcuOCJOIDXCsDQ0JzMwLjEiRQ!5e0!3m2!1sen!2sng!4v1234567890"
                   width="100%"
@@ -558,8 +452,8 @@ function App() {
       {/* Footer */}
       <footer className="bg-blue-950 text-white py-10">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
+          <div className="flex flex-wrap gap-6 mb-8 justify-center">
+            <div className="flex-1 min-w-[250px] max-w-full md:max-w-[calc(33.333%-1rem)]">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-400 rounded-lg flex items-center justify-center">
                   <i className="fas fa-snowflake text-white text-lg"></i>
@@ -568,7 +462,7 @@ function App() {
               </div>
               <p className="text-blue-300 text-sm">Professional Industrial & Domestic Air Conditioning Solutions in Delta State.</p>
             </div>
-            <div>
+            <div className="flex-1 min-w-[250px] max-w-full md:max-w-[calc(33.333%-1rem)]">
               <h4 className="font-bold mb-4 text-orange-400">Quick Links</h4>
               <ul className="space-y-2 text-blue-300 text-sm">
                 <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
@@ -577,7 +471,7 @@ function App() {
                 <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
               </ul>
             </div>
-            <div>
+            <div className="flex-1 min-w-[250px] max-w-full md:max-w-[calc(33.333%-1rem)]">
               <h4 className="font-bold mb-4 text-orange-400">Contact Info</h4>
               <ul className="space-y-2 text-blue-300 text-sm">
                 <li className="flex items-center gap-2">
