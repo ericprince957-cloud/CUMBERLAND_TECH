@@ -1,12 +1,50 @@
-# Cumberland Tech (NIG.) - HVAC Solutions Website
+# Cumberland Tech (NIG.) - Professional HVAC Solutions Website
 
-Professional website for Cumberland Tech (NIG.), an HVAC company based in Delta State, Nigeria.
+A modern, mobile-responsive, single-page website for Cumberland Tech (NIG.), an HVAC company based in Delta State, Nigeria.
 
-## 🚀 Quick Deploy to Vercel
+![Website Preview](https://img.shields.io/badge/Status-Live-success)
+![Mobile Responsive](https://img.shields.io/badge/Mobile-Responsive-blue)
+![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-black)
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ installed
+- npm or yarn package manager
+
+### Installation
+
+```bash
+# 1. Clone or download this repository
+git clone https://github.com/YOUR_USERNAME/cumberland-tech.git
+cd cumberland-tech
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npm run dev
+
+# 4. Open browser to http://localhost:3000
+```
+
+## 📦 Build for Production
+
+```bash
+# Build the project
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+The built files will be in the `dist/` folder.
+
+## 🌐 Deploy to Vercel
 
 ### Option 1: Deploy via GitHub (Recommended)
 
-1. **Push this project to GitHub:**
+1. **Push to GitHub:**
 ```bash
 git init
 git add .
@@ -16,92 +54,133 @@ git remote add origin https://github.com/YOUR_USERNAME/cumberland-tech.git
 git push -u origin main
 ```
 
-2. **Connect to Vercel:**
+2. **Deploy on Vercel:**
    - Go to [vercel.com](https://vercel.com)
-   - Click "New Project"
+   - Click "Add New Project"
    - Import your GitHub repository
-   - Vercel will auto-detect Vite configuration
+   - Vercel auto-detects Vite configuration
    - Click "Deploy"
+   - ✅ Your site is live!
 
 ### Option 2: Deploy via Vercel CLI
 
 ```bash
+# Install Vercel CLI
 npm i -g vercel
+
+# Login to Vercel
 vercel login
+
+# Deploy to production
 vercel --prod
+```
+
+### Option 3: Deploy Built Files
+
+```bash
+# Build the project
+npm run build
+
+# Deploy the dist folder
+vercel --prod dist
 ```
 
 ## 📁 Project Structure
 
 ```
-CUMBERLAND_TECH/
-├── index.html              # Vite entry point
-├── vercel.json             # Vercel deployment config
+cumberland-tech/
+├── index.html              # HTML entry point
 ├── package.json            # Dependencies & scripts
-├── vite.config.js          # Vite build config
+├── vite.config.js          # Vite configuration
+├── vercel.json             # Vercel deployment config
+├── tsconfig.json           # TypeScript configuration
+├── .gitignore              # Git ignore rules
+├── README.md               # This file
+├── DEPLOYMENT.md           # Detailed deployment guide
 ├── src/
-│   ├── App.tsx             # Main React component (full website)
-│   ├── main.tsx            # React entry point
-│   └── index.css           # Tailwind CSS imports
-├── public/
-│   ├── style.css           # Standalone CSS (available at /style.css)
-│   ├── script.js           # Standalone JS (available at /script.js)
-│   └── static-site.html    # Standalone HTML version
-└── README.md               # This file
+│   ├── main.tsx           # React entry point
+│   ├── App.tsx            # Main application component
+│   └── index.css          # Global styles & Tailwind imports
+└── public/
+    ├── style.css          # Standalone CSS (optional)
+    ├── script.js          # Standalone JS (optional)
+    └── static-site.html   # Static HTML version (optional)
 ```
 
-## 🔧 Development
+## 🎨 Features
 
-```bash
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-## 📱 Features
-
+### Design
 - ✅ Mobile-first responsive design
-- ✅ Sticky navigation with mobile hamburger menu
-- ✅ WhatsApp integration (all buttons link to wa.me/2347066350488)
-- ✅ Service cards with pre-filled WhatsApp messages
+- ✅ Professional color scheme (Deep Blue, White, Orange)
+- ✅ Smooth animations and transitions
+- ✅ Modern UI with Tailwind CSS
+- ✅ Custom fonts (Inter)
+
+### Functionality
+- ✅ Sticky navigation with mobile menu
+- ✅ Hero section with call-to-action
+- ✅ Services grid with WhatsApp integration
 - ✅ Image gallery with hover effects
-- ✅ Google Maps embed for location
+- ✅ Contact section with Google Maps
 - ✅ Floating WhatsApp button
 - ✅ Smooth scroll navigation
-- ✅ Professional color scheme (Deep Blue, White, Orange)
+- ✅ SEO optimized meta tags
 
-## 🎨 Color Palette
+### WhatsApp Integration
+All buttons link to WhatsApp with pre-filled messages:
+- Main CTA: "Book a Service via WhatsApp"
+- Service cards: "Hi Cumberland Tech, I'm interested in [Service Name]"
+- Contact section: "Chat on WhatsApp"
+- Floating button: Direct WhatsApp chat
 
-- **Primary Blue:** #1e3a5f (Trust/Professional)
-- **Accent Orange:** #f97316 (Energy/Action)
-- **WhatsApp Green:** #22c55e (Communication)
-- **White:** #ffffff (Cleanliness)
+## 📱 Business Information
 
-## 📞 Business Details
-
-- **Business:** Cumberland Tech (Nig.)
+- **Business Name:** Cumberland Tech (Nig.)
 - **Phone:** 07066350488
 - **WhatsApp:** https://wa.me/2347066350488
-- **Address:** ShopRite Km 1, Refinery Road, Effurun Roundabout, Delta State
+- **Address:** ShopRite Km 1, Refinery Road, Effurun Roundabout, Delta State, Nigeria
+- **Services:** Industrial & Domestic HVAC Solutions
 
 ## 🛠 Tech Stack
 
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS v4
-- Font Awesome 6 (icons)
-- Google Fonts (Inter)
+- **Framework:** React 18 + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS v4
+- **Icons:** Font Awesome 6
+- **Fonts:** Google Fonts (Inter)
+- **Deployment:** Vercel
+
+## 🎯 Services Offered
+
+1. Industrial and Domestic Air Conditioning
+2. Repair of Freezers
+3. Split AC Unit Installation & Repair
+4. Standing/Floor AC Unit Services
+5. Central HVAC Systems
+6. Installation, Maintenance & Repair Services
+7. Installation and Servicing of Kitchen Canopy
+
+## 🔧 Available Scripts
+
+```bash
+npm run dev       # Start development server
+npm run build     # Build for production
+npm run preview   # Preview production build
+npm run typecheck # Run TypeScript type checking
+```
 
 ## 📄 License
 
 © 2026 Cumberland Tech (Nig.). All Rights Reserved.
-Built by Vector Codes.
+
+**Built by Vector Codes**
+
+## 🤝 Support
+
+For questions or support, contact:
+- WhatsApp: https://wa.me/2347066350488
+- Phone: 07066350488
+
+---
+
+**Note:** This is a professional website template designed for HVAC businesses. Customize the content, images, and contact information as needed.

@@ -1,0 +1,305 @@
+================================================================================
+                    CUMBERLAND TECH (NIG.) WEBSITE PROJECT
+                              DOWNLOAD PACKAGE
+================================================================================
+
+PROJECT OVERVIEW
+----------------
+A professional, mobile-responsive single-page website for Cumberland Tech (NIG.),
+an HVAC company based in Delta State, Nigeria.
+
+TECH STACK
+----------
+- React 18 + TypeScript
+- Vite (Build Tool)
+- Tailwind CSS v4
+- Font Awesome 6 (Icons)
+- Google Fonts (Inter)
+
+BUSINESS DETAILS
+----------------
+Company: Cumberland Tech (Nig.)
+Phone: 07066350488
+WhatsApp: https://wa.me/2347066350488
+Address: ShopRite Km 1, Refinery Road, Effurun Roundabout, Delta State, Nigeria
+
+================================================================================
+                              FILES INCLUDED
+================================================================================
+
+📄 DOCUMENTATION FILES
+----------------------
+README.md              - Complete project documentation
+DEPLOYMENT.md          - Step-by-step deployment guide
+CHANGELOG.md           - Version history and updates
+QUICKSTART.md          - Quick start guide (5-minute setup)
+PROJECT_SUMMARY.txt    - This file
+
+📄 CONFIGURATION FILES
+----------------------
+package.json           - Dependencies and scripts
+vite.config.js         - Vite build configuration
+tsconfig.json          - TypeScript configuration
+vercel.json            - Vercel deployment configuration
+.gitignore             - Git ignore rules
+
+📄 SOURCE CODE
+--------------
+index.html             - HTML entry point
+src/
+  ├── main.tsx         - React application entry
+  ├── App.tsx          - Main website component (459 lines)
+  └── index.css        - Global styles and Tailwind imports
+
+📄 STATIC ASSETS (Optional)
+---------------------------
+public/
+  ├── style.css        - Standalone CSS version
+  ├── script.js        - Standalone JavaScript version
+  └── static-site.html - Complete static HTML version
+
+================================================================================
+                           WEBSITE FEATURES
+================================================================================
+
+✅ MOBILE-FIRST DESIGN
+   - Fully responsive on all devices
+   - Touch-friendly buttons and navigation
+   - Optimized for WhatsApp viewing
+
+✅ WHATSAPP INTEGRATION
+   - All buttons link to wa.me/2347066350488
+   - Pre-filled messages for each service
+   - Floating WhatsApp button (always visible)
+
+✅ SECTIONS INCLUDED
+   1. Header/Navigation (sticky with mobile menu)
+   2. Hero Section (with CTA button)
+   3. About Us (with 3 feature cards)
+   4. Services (7 service cards with icons)
+   5. Gallery (4 project images)
+   6. Why Choose Us (3 selling points)
+   7. Contact (with Google Maps)
+   8. Footer (with business info)
+
+✅ SERVICES DISPLAYED
+   1. Industrial and Domestic Air Conditioning
+   2. Repair of Freezers
+   3. Split AC Unit Installation & Repair
+   4. Standing/Floor AC Unit Services
+   5. Central HVAC Systems
+   6. Installation, Maintenance & Repair Services
+   7. Installation and Servicing of Kitchen Canopy
+
+✅ DESIGN ELEMENTS
+   - Professional color scheme (Deep Blue, White, Orange)
+   - Smooth animations and transitions
+   - Hover effects on cards and buttons
+   - Modern UI with gradients and shadows
+   - Custom fonts (Inter)
+   - Font Awesome icons
+
+================================================================================
+                          DEPLOYMENT OPTIONS
+================================================================================
+
+OPTION 1: VERCEL (RECOMMENDED)
+-------------------------------
+1. Push to GitHub:
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/YOUR_USERNAME/cumberland-tech.git
+   git push -u origin main
+
+2. Go to vercel.com
+3. Import your GitHub repository
+4. Click "Deploy"
+5. ✅ Site is live!
+
+OPTION 2: VERCEL CLI
+--------------------
+npm install -g vercel
+vercel login
+vercel --prod
+
+OPTION 3: NETLIFY
+-----------------
+1. Run: npm run build
+2. Drag dist/ folder to netlify.com
+3. ✅ Site is live!
+
+OPTION 4: GITHUB PAGES
+----------------------
+See DEPLOYMENT.md for detailed instructions
+
+================================================================================
+                          QUICK START GUIDE
+================================================================================
+
+STEP 1: INSTALL DEPENDENCIES
+-----------------------------
+npm install
+
+STEP 2: TEST LOCALLY
+--------------------
+npm run dev
+# Open http://localhost:3000 in your browser
+
+STEP 3: BUILD FOR PRODUCTION
+-----------------------------
+npm run build
+# Output will be in dist/ folder
+
+STEP 4: DEPLOY
+--------------
+Choose your deployment option above
+
+================================================================================
+                          CUSTOMIZATION GUIDE
+================================================================================
+
+CHANGE WHATSAPP NUMBER
+----------------------
+File: src/App.tsx
+Line 3: const WHATSAPP_LINK = 'https://wa.me/2347066350488';
+Change to: const WHATSAPP_LINK = 'https://wa.me/YOUR_NUMBER';
+
+CHANGE PHONE NUMBER
+-------------------
+File: src/App.tsx
+Line 4: const PHONE_NUMBER = '07066350488';
+Change to: const PHONE_NUMBER = 'YOUR_NUMBER';
+
+UPDATE SERVICES
+---------------
+File: src/App.tsx
+Lines 6-14: Edit the services array
+Example:
+const services = [
+  { name: 'Your Service Name', icon: 'fa-icon-name' },
+  // Add more services...
+];
+
+UPDATE GALLERY IMAGES
+---------------------
+File: src/App.tsx
+Lines 16-21: Edit the galleryImages array
+Example:
+const galleryImages = [
+  { url: 'your-image-url.jpg', label: 'Project 1' },
+  // Add more images...
+];
+
+CHANGE COLORS
+-------------
+File: src/App.tsx
+Search for color classes like:
+- bg-blue-800 (primary blue)
+- bg-orange-500 (accent orange)
+- bg-green-500 (WhatsApp green)
+Replace with your preferred Tailwind colors
+
+UPDATE BUSINESS ADDRESS
+-----------------------
+File: src/App.tsx
+Search for "ShopRite Km 1" and replace with your address
+
+================================================================================
+                              AVAILABLE COMMANDS
+================================================================================
+
+npm run dev          Start development server (http://localhost:3000)
+npm run build        Build for production (output in dist/)
+npm run preview      Preview production build
+npm run typecheck    Run TypeScript type checking
+
+================================================================================
+                           TROUBLESHOOTING
+================================================================================
+
+ISSUE: Build fails
+SOLUTION: Delete node_modules and package-lock.json, then run npm install
+
+ISSUE: Images not loading
+SOLUTION: Check image URLs in src/App.tsx are correct
+
+ISSUE: WhatsApp links not working
+SOLUTION: Verify phone number format (no spaces, include country code)
+
+ISSUE: Styles not loading
+SOLUTION: Clear browser cache, check Tailwind is imported in src/index.css
+
+ISSUE: 404 on page refresh (after deployment)
+SOLUTION: Ensure vercel.json has rewrites configured (already included)
+
+================================================================================
+                           PROJECT STRUCTURE
+================================================================================
+
+cumberland-tech/
+│
+├── 📄 README.md              # Full documentation
+├── 📄 DEPLOYMENT.md          # Deployment guide
+├── 📄 CHANGELOG.md           # Version history
+├── 📄 QUICKSTART.md          # Quick start guide
+├── 📄 PROJECT_SUMMARY.txt    # This file
+│
+├── 📄 .gitignore             # Git ignore rules
+├── 📄 vercel.json            # Vercel config
+├── 📄 package.json           # Dependencies
+├── 📄 vite.config.js         # Build config
+├── 📄 tsconfig.json          # TypeScript config
+├── 📄 index.html             # HTML entry
+│
+├── 📁 src/                   # Source code
+│   ├── main.tsx             # React entry
+│   ├── App.tsx              # Main component (459 lines)
+│   └── index.css            # Styles
+│
+└── 📁 public/                # Static assets
+    ├── style.css            # Standalone CSS
+    ├── script.js            # Standalone JS
+    └── static-site.html     # Static HTML version
+
+================================================================================
+                              SUPPORT & CONTACT
+================================================================================
+
+For technical support or questions:
+- WhatsApp: https://wa.me/2347066350488
+- Phone: 07066350488
+
+Documentation:
+- README.md - Full project documentation
+- DEPLOYMENT.md - Detailed deployment instructions
+- QUICKSTART.md - Quick 5-minute setup guide
+
+================================================================================
+                                 CREDITS
+================================================================================
+
+Built by: Vector Codes
+Date: 2026
+Client: Cumberland Tech (Nig.)
+Location: Delta State, Nigeria
+
+================================================================================
+                              LICENSE & RIGHTS
+================================================================================
+
+© 2026 Cumberland Tech (Nig.). All Rights Reserved.
+
+This website template is proprietary and created specifically for
+Cumberland Tech (Nig.). Unauthorized distribution is prohibited.
+
+================================================================================
+                           READY TO DEPLOY! ✅
+================================================================================
+
+Your website is ready for deployment. Follow the QUICKSTART.md guide for
+the fastest setup, or refer to DEPLOYMENT.md for detailed instructions.
+
+Good luck with your HVAC business! 🚀
+
+================================================================================
