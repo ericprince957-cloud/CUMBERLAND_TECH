@@ -46,12 +46,13 @@ function App() {
       {/* Header/Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-800 to-blue-600 rounded-lg flex items-center justify-center">
-              <i className="fas fa-snowflake text-white text-lg"></i>
-            </div>
-            <span className="font-bold text-blue-900 text-lg tracking-tight">CUMBERLAND TECH</span>
-          </div>
+          <a href="#home" className="flex items-center">
+            <img 
+              src="https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/42a13c45-f1db-433c-a64e-db8258b513fa.jpg" 
+              alt="Cumberland Tech Logo" 
+              className="h-12 md:h-14 w-auto object-contain"
+            />
+          </a>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
@@ -454,11 +455,12 @@ function App() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap gap-6 mb-8 justify-center">
             <div className="flex-1 min-w-[250px] max-w-full md:max-w-[calc(33.333%-1rem)]">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-400 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-snowflake text-white text-lg"></i>
-                </div>
-                <span className="font-bold text-lg">CUMBERLAND TECH</span>
+              <div className="mb-4">
+                <img 
+                  src="https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/42a13c45-f1db-433c-a64e-db8258b513fa.jpg" 
+                  alt="Cumberland Tech Logo" 
+                  className="h-14 w-auto object-contain brightness-0 invert"
+                />
               </div>
               <p className="text-blue-300 text-sm">Professional Industrial & Domestic Air Conditioning Solutions in Delta State.</p>
             </div>

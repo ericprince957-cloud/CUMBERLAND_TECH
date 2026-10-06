@@ -48,10 +48,21 @@ body {
     align-items: center;
 }
 
-.logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary-blue);
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+@media (min-width: 768px) {
+    .logo-img {
+        height: 56px;
+    }
 }
 
 .nav-links {
