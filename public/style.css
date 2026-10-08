@@ -70,6 +70,20 @@ body {
     gap: 2rem;
 }
 
+.mobile-logo {
+    display: none;
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+.mobile-logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
 .nav-links a {
     text-decoration: none;
     color: var(--text-dark);
@@ -596,6 +610,10 @@ footer {
 
     .emergency-float i {
         font-size: 1.1rem;
+    }
+
+    .mobile-logo {
+        display: block;
     }
 }
 

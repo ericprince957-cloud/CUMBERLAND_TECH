@@ -84,6 +84,13 @@ function App() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t shadow-lg">
+            <div className="px-4 py-4 border-b border-gray-100">
+              <img 
+                src="https://i.supaimg.com/9dc6f57b-5162-43a8-b5c4-fe09a230e15b/42a13c45-f1db-433c-a64e-db8258b513fa.jpg" 
+                alt="Cumberland Tech Logo" 
+                className="h-12 w-auto object-contain mx-auto"
+              />
+            </div>
             <nav className="flex flex-col px-4 py-4 gap-3">
               <a href="#home" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 hover:text-blue-800 font-medium py-2">Home</a>
               <a href="#services" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 hover:text-blue-800 font-medium py-2">Services</a>
